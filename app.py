@@ -1,25 +1,28 @@
 import streamlit as st
 
-# Enhanced CSS to hide ALL Streamlit Cloud UI elements
-hide_streamlit_style = """
-    <style>
-    /* Hide main menu, footer, and header */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+# Custom navigation menu
+st.set_page_config(page_title="Job Application Project", layout="wide")
 
-    /* Hide Streamlit Cloud "Manage App" floating button */
-    .viewerBadge_container__1QSob {display: none;}
-    .stDeployButton {display: none;}
-    .stActionButton {display: none;}
+st.markdown("## Job Application Project")
 
-    /* Optional: hide top-right hamburger and other buttons */
-    .css-eczf16 {visibility: hidden;}
-    </style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+# Define navigation options
+menu = st.selectbox("Navigate to", ["Home", "Tracker", "Applications"])
 
-st.title("Hello, Production World!")
-st.write("All Streamlit controls are now hidden.")
+# Load selected page content
+if menu == "Home":
+    st.markdown("### Welcome to the Job Application Tracker")
+    st.markdown("""
+    Use this tool to track your job applications and analyze your progress.
+
+    Select a page from the dropdown above.
+    """)
+
+elif menu == "Tracker":
+    from pages import tracker
+    tracker.show()
+
+elif menu == "Applications":
+    from pages import applications
+    applications.show()
 
 

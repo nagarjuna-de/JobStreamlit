@@ -2,7 +2,7 @@
 headless = true
 
 [theme]
-base = "light"
+base = "dark"
 
 [browser]
 gatherUsageStats = false
@@ -12,3 +12,5 @@ showSidebarNavigation = false
 
 [ui]
 hideTopBar = true
+
+
