@@ -1,28 +1,31 @@
 import streamlit as st
+from utils.auth import get_access_token
+from pages import tracker, applications
 
-# Custom navigation menu
 st.set_page_config(page_title="Job Application Project", layout="wide")
+st.title("💼 Job Application Project")
 
-st.markdown("## Job Application Project")
+get_access_token()
 
-# Define navigation options
-menu = st.selectbox("Navigate to", ["Home", "Tracker", "Applications"])
+if "token" in st.session_state:
+    st.success("🔑 Access token is available. Ready to access OneDrive.")
 
-# Load selected page content
-if menu == "Home":
-    st.markdown("### Welcome to the Job Application Tracker")
-    st.markdown("""
-    Use this tool to track your job applications and analyze your progress.
+    # Navigation
+    page = st.selectbox("Navigate to", ["Home", "Tracker", "Applications"])
 
-    Select a page from the dropdown above.
-    """)
+    if page == "Home":
+        st.header("🏠 Home")
+        st.markdown("""
+        Welcome to your Job Application Tracker.
 
-elif menu == "Tracker":
-    from pages import tracker
-    tracker.show()
+        Use **Tracker** to see charts and insights.
 
-elif menu == "Applications":
-    from pages import applications
-    applications.show()
-
-
+        Use **Applications** to manage your job entries.
+        """)
+    elif page == "Tracker":
+        tracker.show()
+    elif page == "Applications":
+        applications.show()
+else:
+    st.warning("Please log in to continue.")
+    st.stop()  # Stops app execution after showing login button
