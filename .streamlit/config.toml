@@ -8,7 +8,7 @@ base = "dark"
 gatherUsageStats = false
 
 [client]
-showSidebarNavigation = false
+showSidebarNavigation = true
 
 [ui]
 hideTopBar = true

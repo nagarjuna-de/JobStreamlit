@@ -1,5 +1,5 @@
 import streamlit as st
 
-def show():
-    st.header("📋 Applications")
+st.set_page_config(page_title="📝 Applications", layout="wide")
+st.title("📝 Applications")
 
