@@ -3,3 +3,5 @@ msal
 pandas
 openpyxl
 requests
+python-docx
+docxtpl

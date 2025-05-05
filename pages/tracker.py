@@ -23,26 +23,43 @@ if "token" in st.session_state:
         )
 
         display_df = df.drop(columns=["ID"])
-        # Show the main table
+        display_df.insert(0, "Open", False)
+
         st.subheader("📄 Job Applications Table")
+
         edited_df = st.data_editor(
             display_df,
             num_rows="fixed",
             use_container_width=True,
             column_config={
+                "Open": st.column_config.CheckboxColumn("▶️", help="Go to Application"),
                 "Company Name": st.column_config.TextColumn(),
                 "Url": st.column_config.TextColumn("Application URL"),
                 "Status": st.column_config.SelectboxColumn(
                     "Status",
                     options=["Preparation", "Applied", "In process", "Rejected"]
                 ),
-                # Lock all other columns (optional)
                 "Job Type": st.column_config.TextColumn(disabled=True),
-                "Date": st.column_config.DateColumn("Date", format="DD-MMM-YYYY"),
+                "Date": st.column_config.DateColumn("Date", format="DD-MMM-YYYY", disabled=True),
                 "Created Application folder": st.column_config.TextColumn(disabled=True),
             },
             key="editor"
         )
+
+        selected_rows = edited_df[edited_df["Open"] == True]
+
+        # Enforce single selection
+        if len(selected_rows) > 1:
+            st.warning("⚠️ Please select only one row.")
+        elif len(selected_rows) == 1:
+            row = selected_rows.iloc[0]  # get the first selected row
+            if st.button(f"🔍 Open {row['Company Name']} ({row['Job Type']})"):
+                st.session_state["selected_job"] = row.to_dict()
+                st.switch_page("pages/applications.py")
+
+
+  
+
 
         if st.button("💾 Save Updates to Excel"):
             try:
