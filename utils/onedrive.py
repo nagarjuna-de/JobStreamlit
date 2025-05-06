@@ -71,7 +71,7 @@ def append_row_to_excel_table(access_token, new_row: dict, filepath="Jobs/JobTra
         new_row.get("Date", ""),
         new_row.get("Company Name", ""),
         new_row.get("Url", ""),
-        new_row.get("Created Application folder", ""),
+        new_row.get("Folder Created", ""),
         new_row.get("Status", "")
     ]]
 
@@ -109,7 +109,7 @@ def append_row_to_excel_table(access_token, new_row: dict, filepath="Jobs/JobTra
         pass  # Fail silently if session close fails — Excel will auto-close it eventually
 
 
-    import requests
+
 
 def overwrite_excel_file(access_token, updated_df, filepath="Jobs/JobTracker.xlsx"):
     """
