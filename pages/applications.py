@@ -29,7 +29,7 @@ if "latest_notification" not in st.session_state:
 # --- Files to copy ---
 file_names = [
     "nagarjuna_ravella_CV.docx",
-    "nagarjuna-ravella_coverletter.docx",
+    "nagarjuna_ravella_coverletter.docx",
     "CV_template.json",
     "CL_template.json",
 ]
