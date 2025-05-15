@@ -94,8 +94,8 @@ if "selected_job" in st.session_state:
                 template_docx_filename = "nagarjuna_ravella_coverletter.docx"
                 template_json_filename = "CL_template.json"
                 bullets_json_filename = "CL_WEBullets.json"
-                output_docx_filename = "FINAL_CL.docx"
-                output_pdf_filename = "FINAL_CL.pdf"
+                output_docx_filename = f"{job['Company Name']}_CL.docx"
+                output_pdf_filename = "Nagarjuna_Ravella_CoverLetter.pdf"
 
             # Load placeholders JSON
             json_path = f"{target_folder}/{template_json_filename}"
