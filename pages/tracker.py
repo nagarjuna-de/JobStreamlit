@@ -8,7 +8,7 @@ import uuid
 
 
 st.set_page_config(page_title="📊 Tracker", layout="wide")
-get_access_token()
+get_access_token(force_refresh=False)
 
 st.title("📊 Tracker Page")
 
