@@ -8,7 +8,7 @@ AUTHORITY = "https://login.microsoftonline.com/common"
 SCOPES = ["User.Read", "Files.ReadWrite"]
 
 # Change to True only when you want to regenerate base64 secret
-LOCAL_MODE = False
+LOCAL_MODE = True
 
 
 def get_access_token():
