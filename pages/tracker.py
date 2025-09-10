@@ -25,7 +25,7 @@ if "token" in st.session_state:
         display_df = df.drop(columns=["ID"])
         display_df.insert(0, "Open", False)
 
-        st.subheader("📄 Job Applications Table")
+        st.subheader("📄 Job List")
 
         edited_df = st.data_editor(
             display_df,
